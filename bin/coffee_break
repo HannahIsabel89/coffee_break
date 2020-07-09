@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby 
 
-puts Coffee_Break::CLI.new.start
+require_relative '../lib/coffee_break.rb'
+
+puts Coffee_Break::CLI.new.run

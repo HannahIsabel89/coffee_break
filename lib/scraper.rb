@@ -27,10 +27,7 @@ module Coffee_Break
         end
         
         def roast_type(filter)
-
-            url = https://playeronecoffee.com/collections/all-coffee
-            doc = Nokogiri::HTML(open(url))
-            filter_type = doc.search('.filtering-tag-item') # Filter by type: Dark, Medium, Light Roast
+            self.get_doc.search('.filtering-tag-item') # Filter by type: Dark, Medium, Light Roast
         end
 
         def self.display_product
@@ -38,3 +35,6 @@ module Coffee_Break
                 puts "#{index}. #{product.name}, #{product.label}, #{product.price}"
         end
     end
+end 
+end 
+end 

@@ -5,8 +5,7 @@ module Coffee_Break
 
       def run
         system("clear") # Clears terminal before starting CLI program
-        greeting
-        CLI Menu
+        greeting 
         while menu != 'exit' # Menu stays open until user ends program
         end
         exit_program
@@ -24,18 +23,24 @@ module Coffee_Break
         puts "Please enter menu to choose a coffee roast type."
         input = gets.strip.downcase
           if input == "menu"
-            Coffee_Break::Coffee.all.each.with.index(1) do |list, index|
+            Coffee_Break::Beans.all.each.with_index(1) do |list, index|
             puts "#{index}.#{list.title}"
           end
             list_options
-          elsif input == "Exit"
+          elsif input == "exit"
             exit_program
           else
+            i = Integer(input , exception: false)
+            if !i.nil?
+              puts i 
+            else 
             puts "Please try again."
             menu
           end     
         end
       end
+    end 
+  end 
     
       def list_options
         puts <<-DOC.gsub /^\s*/, '' # Allows to print strings from the lines below
@@ -45,24 +50,12 @@ module Coffee_Break
           Enter exit to stop the program.
           DOC
       end
-    
-      def choose_option(input)
-        case option # Based on user input, roast option will be displayed
-        when "1"
-          puts "You chose Dark Roast."
-        when "2"
-          puts "You chose Medium Roast."
-        when "3"
-          puts "You chose Light Roast."
-          end
-        end
-      end  
-  
+
       def display_coffee
         puts "Enter the number you'd like to know more about."
           input = gets.strip.to_i
           index = input-1
-        puts "You chose #{input}.#{Coffee_Break::Beans.all[index].title}"
+        puts "You chose #{input}.#{Coffee_Break::Beans.all[index].name}"
         puts "#{Coffee_Break::Beans.all[index].label}"
         puts "#{Coffee_Break::Beans.all[index].price}"
         show_again
