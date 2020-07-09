@@ -1,15 +1,8 @@
 require 'nokogiri'
 require 'open-uri'
-require 'byebug'
+require 'pry'
 
 require_relative "./lib/version"
 require_relative "./lib/cli"
 require_relative "./lib/scraper"
 require_relative "./lib/beans"
-
-    module Coffee_Break
-        class Error < StandardError; 
-        
-        end 
-
-    end 

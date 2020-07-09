@@ -1,4 +1,4 @@
-# module Coffee_Break
+module Coffee_Break
   class CLI
 
     # Greet the user, runs CLI program
@@ -63,7 +63,7 @@
           input = gets.strip.to_i
           index = input-1
         puts "You chose #{input}.#{Coffee_Break::Beans.all[index].title}"
-        puts "#{Coffee_Break::Beans.all[index].details}"
+        puts "#{Coffee_Break::Beans.all[index].label}"
         puts "#{Coffee_Break::Beans.all[index].price}"
         show_again
           if input <= 0 || input > Coffee_Break::Beans.all.size
@@ -87,6 +87,5 @@
             display_again 
           end 
         end 
-      end 
 
-puts Coffee_Break::CLI.new.start
+# puts Coffee_Break::CLI.new.start

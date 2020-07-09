@@ -1,6 +1,5 @@
 require 'nokogiri'
-require 'open-uri'
-require 'byebug'
+require 'pry'
 
 module Coffee_Break
     class Scraper 
@@ -11,8 +10,9 @@ module Coffee_Break
         def initialize (name=nil, label=nil, price=nil)
             @name = name 
             @label = label 
-            price = price
-            @url = " "https://playeronecoffee.com/collections/all-coffee/""
+            @price = price
+            @url = "https://playeronecoffee.com/collections/all-coffee/"
+        end 
 
         def self.all 
             @@all 
@@ -35,8 +35,6 @@ module Coffee_Break
 
         def self.display_product
             @@all.each.with_index(1) do |index, product, roast, pricetag|
-                puts "#{index}. #{product.name}, #{product.roast}, #{product.price}"
-            end
+                puts "#{index}. #{product.name}, #{product.label}, #{product.price}"
         end
-end
-
+    end
