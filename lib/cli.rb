@@ -7,20 +7,24 @@ module Coffee_Break
 
       def run 
         system("clear") # Clears terminal before starting CLI program
-        puts "Grabbing a mug..." # Loading message before program starts
-        puts "Processing coffee..."
-        puts "Pouring greatness..."
-        puts "*slurps*"
-        puts "+8 energy, +6 social, +5 vitality "
+        loading_message
         Scraper.new.scrape
         greeting 
         while menu != 'exit' # Menu stays open until user ends program
+          exit_program
         end
-        exit_program
       end
- 
+
+      def loading_message
+        puts "Brewing coffee..." # Loading message before program starts
+        puts "Grabbing a mug..."
+        puts "Pouring greatness..."
+        puts "*slurps*"
+        puts "+8 energy, +8 social, +8 vitality "
+      end
+
       def greeting
-        puts "Welcome to PlayerOneCoffee! Spill the beans, what would you like?"
+        puts "Welcome to PlayerOneCoffee! Spill the beans, what would you like? Enter menu to choose."
       end
     
       def exit_program
@@ -28,7 +32,6 @@ module Coffee_Break
       end
 
       def menu
-        puts "Please enter menu to choose a coffee roast type."
         input = gets.strip.downcase
         if input == "menu"
           list_options
@@ -58,6 +61,7 @@ module Coffee_Break
 
       def display_coffee
         puts "Enter the number you'd like to know more about."
+        puts Coffee_Break::Beans.all
           input = gets.strip.to_i
           index = input-1
         puts "You chose #{input}.#{Coffee_Break::Beans.all[index].name}"
@@ -68,21 +72,17 @@ module Coffee_Break
           if input <= 0 || input > Coffee_Break::Beans.all.size
             puts "Please try again."
             display_again
-          else
-            exit_program
           end 
         end 
 
       def display_again
         puts "Would you like to see the menu one more time? [y/n]"
         answer = gets.strip.downcase  
-          if answer == "Yes" || answer == "y"
+          if answer == "y"
             puts "Here you go!"
-            display_coffee 
-          elsif answer == "No" || answer == "n"
-            exit_program
-          else 
-            puts "Please try again."
-            menu 
+            list_options
+          elsif answer == "n"
+            
           end  
         end 
+
