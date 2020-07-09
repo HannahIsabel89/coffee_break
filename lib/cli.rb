@@ -3,7 +3,7 @@ module Coffee_Break
 
     # Greet the user, runs CLI program
 
-      def run
+      def run 
         system("clear") # Clears terminal before starting CLI program
         greeting 
         while menu != 'exit' # Menu stays open until user ends program
@@ -23,19 +23,15 @@ module Coffee_Break
         puts "Please enter menu to choose a coffee roast type."
         input = gets.strip.downcase
           if input == "menu"
-            Coffee_Break::Beans.all.each.with_index(1) do |list, index|
-            puts "#{index}.#{list.title}"
-          end
             list_options
           elsif input == "exit"
             exit_program
           else
-            i = Integer(input , exception: false)
-            if !i.nil?
+            i = Integer(input , exception: false) # Parsed input to raise exception when not false
+            if !i.nil? 
               puts i 
-            else 
-            puts "Please try again."
-            menu
+            else # Raises argument if input is wrong
+            puts "Please try again." 
           end     
         end
       end
