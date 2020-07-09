@@ -1,3 +1,5 @@
+require_relative "./scraper.rb"
+
 module Coffee_Break
   class CLI
 
@@ -5,6 +7,8 @@ module Coffee_Break
 
       def run 
         system("clear") # Clears terminal before starting CLI program
+        puts "Loading..."
+        Scraper.new.scrape
         greeting 
         while menu != 'exit' # Menu stays open until user ends program
         end
@@ -22,18 +26,17 @@ module Coffee_Break
       def menu
         puts "Please enter menu to choose a coffee roast type."
         input = gets.strip.downcase
-          if input == "menu"
-            list_options
-          elsif input == "exit"
-            exit_program
-          else
-            i = Integer(input , exception: false) # Parsed input to raise exception when not false
-            if !i.nil? 
-              puts i 
-            else # Raises argument if input is wrong
+        if input == "menu"
+          list_options
+        elsif input != "exit"
+          i = Integer(input , exception: false) # Parsed input to raise exception when not false
+          if !i.nil? 
+            puts i # Prints number user entered. 
+          else # Raises argument if input is wrong
             puts "Please try again." 
-          end     
+          end
         end
+          input
       end
     end 
   end 
@@ -61,20 +64,20 @@ module Coffee_Break
           else
             end_of_program
           end 
-        end
+        end # 7/9/2020: Coffee doesn't display? 
 
-      def display_again
-        puts "Would you like to see it one more time?"
-        answer = gets.strip.downcase  
-          if answer == "Yes" || answer == "y"
-            puts "Here you go!"
-            display_coffee 
-          elsif answer == "No" || answer == "n"
-            end_of_program
-          else 
-            puts "Please try again."
-            display_again 
-          end 
-        end 
+      # def display_again
+      #   puts "Would you like to see it one more time?"
+      #   answer = gets.strip.downcase  
+      #     if answer == "Yes" || answer == "y"
+      #       puts "Here you go!"
+      #       display_coffee 
+      #     elsif answer == "No" || answer == "n"
+      #       end_of_program
+      #     else 
+      #       puts "Please try again."
+      #       display_again 
+      #     end  
+        # end 
 
 # puts Coffee_Break::CLI.new.start

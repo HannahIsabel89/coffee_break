@@ -3,38 +3,21 @@ require 'pry'
 
 module Coffee_Break
     class Scraper 
-        attr_accessor :name, :label, :price, :url
-
-    @@all = []
-
-        def initialize (name=nil, label=nil, price=nil)
-            @name = name 
-            @label = label 
-            @price = price
-            @url = "https://playeronecoffee.com/collections/all-coffee/"
-        end 
-
-        def self.all 
-            @@all 
-        end 
         
         def scrape
-        doc = Nokogiri::HTML(open(URL))
-        doc.css.each do |list|
-            name = doc.css(".grid-view-item__title").text
-            label = doc.css(".label").text
-            price = doc.css("product-price__price").text
+            doc = Nokogiri::HTML(URI.open("https://playeronecoffee.com/collections/all-coffee/"))
+            doc.css(".grid-view-item").each do |tag| # Access each tag from below
+                
+                name = tag.css(".grid-view-item__title").text
+                label = tag.css("div.grid-view-item__level span.label").text # CSS Selector searches document, looking for Div-class that says label
+                price = tag.css("div.grid-view-item__meta span.product-price__price").text
+                link = "https://playeronecoffee.com"+ tag.css("a.grid-view-item__link")[0][:href]
+                details = Nokogiri::HTML(URI.open(link)).css("div.product-single__description p").text
+                product = Beans.new(name, label, price, details)
+                Beans.all << product
+            end
         end
         
-        def roast_type(filter)
-            self.get_doc.search('.filtering-tag-item') # Filter by type: Dark, Medium, Light Roast
-        end
 
-        def self.display_product
-            @@all.each.with_index(1) do |index, product, roast, pricetag|
-                puts "#{index}. #{product.name}, #{product.label}, #{product.price}"
-        end
-    end
-end 
-end 
+    end 
 end 
