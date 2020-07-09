@@ -15,7 +15,7 @@ class Coffee_Break::Beans
             @details = details
         end 
 
-        def self.all 
+        def self.all
             @@all 
         end
 

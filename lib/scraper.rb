@@ -12,9 +12,9 @@ module Coffee_Break
                 label = tag.css("div.grid-view-item__level span.label").text # CSS Selector searches document, looking for Div-class that says label
                 price = tag.css("div.grid-view-item__meta span.product-price__price").text
                 link = "https://playeronecoffee.com"+ tag.css("a.grid-view-item__link")[0][:href]
-                details = Nokogiri::HTML(URI.open(link)).css("div.product-single__description p").text
-                product = Beans.new(name, label, price, details)
-                Beans.all << product
+                details = Nokogiri::HTML(URI.open(link)).css("div.product-single__description p").text # Opens product link to provide details
+                product = Beans.new(name, label, price, details) # Calls on class Beans 
+                Beans.all << product # Stores scraped data onto Beans class 
             end
         end
         

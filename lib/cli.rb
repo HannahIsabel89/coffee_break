@@ -7,7 +7,11 @@ module Coffee_Break
 
       def run 
         system("clear") # Clears terminal before starting CLI program
-        puts "Loading..."
+        puts "Grabbing a mug..." # Loading message before program starts
+        puts "Processing coffee..."
+        puts "Pouring greatness..."
+        puts "*slurps*"
+        puts "+8 energy, +6 social, +5 vitality "
         Scraper.new.scrape
         greeting 
         while menu != 'exit' # Menu stays open until user ends program
@@ -32,6 +36,8 @@ module Coffee_Break
           i = Integer(input , exception: false) # Parsed input to raise exception when not false
           if !i.nil? 
             puts i # Prints number user entered. 
+            display_coffee 
+            display_again
           else # Raises argument if input is wrong
             puts "Please try again." 
           end
@@ -57,27 +63,26 @@ module Coffee_Break
         puts "You chose #{input}.#{Coffee_Break::Beans.all[index].name}"
         puts "#{Coffee_Break::Beans.all[index].label}"
         puts "#{Coffee_Break::Beans.all[index].price}"
-        show_again
+        puts "#{Coffee_Break::Beans.all[index].details}"
+        display_again
           if input <= 0 || input > Coffee_Break::Beans.all.size
             puts "Please try again."
             display_again
           else
-            end_of_program
+            exit_program
           end 
-        end # 7/9/2020: Coffee doesn't display? 
+        end 
 
-      # def display_again
-      #   puts "Would you like to see it one more time?"
-      #   answer = gets.strip.downcase  
-      #     if answer == "Yes" || answer == "y"
-      #       puts "Here you go!"
-      #       display_coffee 
-      #     elsif answer == "No" || answer == "n"
-      #       end_of_program
-      #     else 
-      #       puts "Please try again."
-      #       display_again 
-      #     end  
-        # end 
-
-# puts Coffee_Break::CLI.new.start
+      def display_again
+        puts "Would you like to see the menu one more time? [y/n]"
+        answer = gets.strip.downcase  
+          if answer == "Yes" || answer == "y"
+            puts "Here you go!"
+            display_coffee 
+          elsif answer == "No" || answer == "n"
+            exit_program
+          else 
+            puts "Please try again."
+            menu 
+          end  
+        end 
