@@ -1,6 +1,6 @@
 # CoffeeBreak
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/coffee_break`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to the CoffeeBreak gem! This gem allows the user to look through the selections of available coffee at Playeronecoffee's website.
 
 TODO: Delete this and the text above, and describe your gem
 
