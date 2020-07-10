@@ -39,15 +39,16 @@ module Coffee_Break
       end
 
       def menu
+        list_options
+        puts "Enter the number you'd like to know more about."
         input = gets.strip.downcase
         if input == "menu"
           puts " "
-          list_options
         elsif input != "exit"
           i = Integer(input , exception: false) # Parsed input to raise exception when not false
           if !i.nil? 
             puts i # Prints number user entered. 
-            display_coffee 
+            display_coffee(i-1)
             display_again
           else # Raises argument if input is wrong
             puts "Please try again." 
@@ -59,24 +60,18 @@ module Coffee_Break
   end 
     
       def list_options
-        puts 
+        Coffee_Break::Beans.all.each_with_index do |product, index|
+          puts "#{index+1} #{product.name}"
+        end
       end
 
-      def display_coffee
-        puts "Enter the number you'd like to know more about."
-          input = gets.strip.to_i
-          index = input-1
+      def display_coffee(index)
         puts "You chose:"
         puts "#{Coffee_Break::Beans.all[index].name}"
         puts "#{Coffee_Break::Beans.all[index].label}"
         puts "#{Coffee_Break::Beans.all[index].price}"
         puts "#{Coffee_Break::Beans.all[index].details}"
         puts " "
-        display_again
-          if input <= 0 || input > Coffee_Break::Beans.all.size
-            puts "Please try again."
-            display_again
-          end 
         end 
           
       def display_again
@@ -85,7 +80,6 @@ module Coffee_Break
           if answer == "y"
             puts "Here you go!"
             menu
-            list_options
           elsif answer == "n"
           exit_program
           end  

@@ -2,11 +2,10 @@ require 'nokogiri'
 require 'pry'
 
 module Coffee_Break
-    class Scraper 
+    class Scraper_2
 
-        def scrape
-            doc = Nokogiri::HTML(URI.open("https://playeronecoffee.com/collections/all-coffee/"))
-            doc2 = Nokogiri::HTML(URI.open("https://playeronecoffee.com/collections/all-coffee?page=2"))
+        def scrape_second_page
+            doc = Nokogiri::HTML(URI.open("https://playeronecoffee.com/collections/all-coffee?page=2"))
 
             doc.css(".grid-view-item").each do |tag| # Access each tag from below
                 
