@@ -1,4 +1,5 @@
 require_relative "./scraper.rb"
+require_relative "./scraper2.rb"
 
 module Coffee_Break
   class CLI
@@ -9,6 +10,7 @@ module Coffee_Break
         system("clear") # Clears terminal before starting CLI program
         loading_message
         Scraper.new.scrape
+        Scraper_2.new.scrape_second_page
         greeting 
         while menu != 'exit' # Menu stays open unless user ends program
         end
@@ -16,8 +18,8 @@ module Coffee_Break
 
       def loading_message
         puts "Brewing coffee..." # Loading message before program starts
-        puts "Grabbing a mug..."
-        puts "Pouring greatness..."
+        puts "Grabbing favourite mug..."
+        puts "Pouring into the mug..."
         puts " "
         puts "*slurps*"
         puts " "
@@ -57,11 +59,7 @@ module Coffee_Break
   end 
     
       def list_options
-        puts <<-DOC.gsub /^\s*/, '' # Allows to print strings from the lines below
-        1. Dark Roast
-        2. Medium Roast
-        3. Light Roast
-          DOC
+        puts 
       end
 
       def display_coffee
@@ -92,4 +90,3 @@ module Coffee_Break
           exit_program
           end  
         end 
-
