@@ -9,10 +9,13 @@ module Coffee_Break
       def run 
         system("clear") # Clears terminal before starting CLI program
         loading_message
+        
         Scraper.new.scrape
         Scraper_2.new.scrape_second_page
+        
         greeting 
-        while menu != 'exit' # Menu stays open unless user ends program
+        while menu != 'exit' # Terminal stays open unless user ends program
+
         end
       end
 
@@ -25,43 +28,57 @@ module Coffee_Break
         puts " "
         puts "+8 energy, +8 social, +8 vitality "
         puts " "
+
       end
 
       def greeting
-        puts "Welcome to PlayerOneCoffee! Spill the beans, what would you like?" 
-        puts "Enter menu to view."
-        puts "Or enter exit to stop the program."
+        puts "Welcome to PlayerOneCoffee! Spill the beans, what would you like?"
+        puts "☕️"
+        puts "Enter the number you'd like to know more about."
+        puts "Or type exit to stop the program."
+        puts " "
+        
       end
     
       def exit_program
         puts "Thanks for stopping by. Until next time!"
         exit
+
       end
 
       def menu
         list_options
-        puts "Enter the number you'd like to know more about."
         input = gets.strip.downcase
-        if input == "menu"
+
+        if input == "i"
           puts " "
+          # Blank space to show below if user enters. 
+
         elsif input != "exit"
-          i = Integer(input , exception: false) # Parsed input to raise exception when not false
+          i = Integer(input , exception: false) 
+          # Parsed input to raise exception when not false
           if !i.nil? 
-            puts i # Prints number user entered. 
+            puts i 
+            # Prints number user entered. 
             display_coffee(i-1)
-            display_again
+            # Count starts at 0 for the computer, 1 for the user.
+            display_again 
+
           else # Raises argument if input is wrong
             puts "Please try again." 
+            
+            end
           end
+            input # User prompted to give input.
         end
-          input
-      end
+      end 
     end 
-  end 
     
       def list_options
-        Coffee_Break::Beans.all.each_with_index do |product, index|
+        Coffee_Break::Beans.all.each_with_index do |product, index| 
+          # Products are listed in numerical order with product name.
           puts "#{index+1} #{product.name}"
+        
         end
       end
 
@@ -72,15 +89,19 @@ module Coffee_Break
         puts "#{Coffee_Break::Beans.all[index].price}"
         puts "#{Coffee_Break::Beans.all[index].details}"
         puts " "
+
         end 
           
-      def display_again
-        puts "Would you like to see the menu one more time? [y/n]"
-        answer = gets.strip.downcase  
+      def display_again 
+        puts "Would you like to see the menu again? [y/n]"
+        answer = gets.strip.downcase
+
           if answer == "y"
             puts "Here you go!"
             menu
+
           elsif answer == "n"
-          exit_program
-          end  
-        end 
+            exit_program
+
+        end  
+      end

@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Access the coffee collection from PlayerOneCoffee's website! 
 
 ## Development
 
