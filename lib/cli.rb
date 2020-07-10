@@ -15,9 +15,9 @@ module Coffee_Break
         
         greeting 
         while menu != 'exit' # Terminal stays open unless user ends program
-
-        end
+          
       end
+    end
 
       def loading_message
         puts "Brewing coffee..." # Loading message before program starts
@@ -26,7 +26,7 @@ module Coffee_Break
         puts " "
         puts "*slurps*"
         puts " "
-        puts "+8 energy, +8 social, +8 vitality "
+        puts "+10 Stamina, +10 Charisma, +10 Vitality "
         puts " "
 
       end
@@ -41,7 +41,9 @@ module Coffee_Break
       end
     
       def exit_program
+        puts " "
         puts "Thanks for stopping by. Until next time!"
+        puts " "
         exit
 
       end
@@ -52,7 +54,7 @@ module Coffee_Break
 
         if input == "i"
           puts " "
-          # Blank space to show below if user enters. 
+          # Blank space to show below if user makes valid. 
 
         elsif input != "exit"
           i = Integer(input , exception: false) 
@@ -64,8 +66,10 @@ module Coffee_Break
             # Count starts at 0 for the computer, 1 for the user.
             display_again 
 
-          else # Raises argument if input is wrong
-            puts "Please try again." 
+          else  # Raises argument if input is wrong
+            puts " "
+            puts "Oops! Please try again."
+            puts " " 
             
             end
           end
@@ -83,10 +87,15 @@ module Coffee_Break
       end
 
       def display_coffee(index)
+        puts " "
         puts "You chose:"
-        puts "#{Coffee_Break::Beans.all[index].name}"
+        puts " "
+        puts "#{Coffee_Break::Beans.all[index].name}" 
+        puts " "
         puts "#{Coffee_Break::Beans.all[index].label}"
+        puts " "
         puts "#{Coffee_Break::Beans.all[index].price}"
+        puts " "
         puts "#{Coffee_Break::Beans.all[index].details}"
         puts " "
 
@@ -98,10 +107,16 @@ module Coffee_Break
 
           if answer == "y"
             puts "Here you go!"
+            puts " "
+            puts " "
             menu
 
           elsif answer == "n"
             exit_program
+          else 
+            puts " "
+            puts "Uh-oh! Please try again."
+            puts " "
 
         end  
       end

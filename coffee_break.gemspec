@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["slen.detablan@gmail.com"]
 
   spec.summary       = %q{View coffee products on PlayerOneCoffee.}
-  spec.description   = %q{See product's roast type, price, and description.}
+  spec.description   = %q{Each coffee product will display their roast type, price, and description.}
   spec.homepage      = "https://github.com/Ro5hi/coffee_break"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.bindir        = "bin"
-  spec.post_install_message = "Thank you for installing coffee_break!"
+  spec.post_install_message = "Thank you for installing coffeebreak!"
   spec.executables   = ["coffee_time"]
   spec.require_paths = ["lib"]
 
