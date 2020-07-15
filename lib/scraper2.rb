@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-module Coffee_Break
+module CoffeeBreak
     class Scraper_2
 
         # Grabs additional products and info from the second page in the url.

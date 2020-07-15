@@ -1,18 +1,17 @@
 require_relative 'lib/coffee_break/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "coffee_break"
+  spec.name          = "coffeebreak"
   spec.version       = CoffeeBreak::VERSION
   spec.authors       = ["Shirlen Detablan"]
   spec.email         = ["slen.detablan@gmail.com"]
 
   spec.summary       = %q{View coffee products on PlayerOneCoffee.}
-  spec.description   = %q{Each coffee product will display their roast type, price, and description.}
+  spec.description   = %q{Available products will display their roast type, price, and description.}
   spec.homepage      = "https://github.com/Ro5hi/coffee_break"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
-  spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["homepage_uri"] = "https://github.com/Ro5hi/coffee_break"
   spec.metadata["source_code_uri"] = "https://github.com/Ro5hi/coffee_break"
 
  
@@ -23,7 +22,7 @@ Gem::Specification.new do |spec|
 
   spec.bindir        = "bin"
   spec.post_install_message = "Thank you for installing coffeebreak!"
-  spec.executables   = ["coffee_time"]
+  spec.executables   << 'coffee_time'
   spec.require_paths = ["lib"]
 
   spec.add_dependency "nokogiri"

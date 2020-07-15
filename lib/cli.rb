@@ -1,7 +1,7 @@
 require_relative "./scraper.rb"
 require_relative "./scraper2.rb"
 
-module Coffee_Break
+module CoffeeBreak
   class CLI
 
     # Greet the user, runs CLI program
@@ -79,7 +79,7 @@ module Coffee_Break
     end 
     
       def list_options
-        Coffee_Break::Beans.all.each_with_index do |product, index| 
+        CoffeeBreak::Beans.all.each_with_index do |product, index| 
           # Products are listed in numerical order with product name.
           puts "#{index+1} #{product.name}"
         
@@ -90,13 +90,13 @@ module Coffee_Break
         puts " "
         puts "You chose:"
         puts " "
-        puts "#{Coffee_Break::Beans.all[index].name}" 
+        puts "#{CoffeeBreak::Beans.all[index].name}" 
         puts " "
-        puts "#{Coffee_Break::Beans.all[index].label}"
+        puts "#{CoffeeBreak::Beans.all[index].label}"
         puts " "
-        puts "#{Coffee_Break::Beans.all[index].price}"
+        puts "#{CoffeeBreak::Beans.all[index].price}"
         puts " "
-        puts "#{Coffee_Break::Beans.all[index].details}"
+        puts "#{CoffeeBreak::Beans.all[index].details}"
         puts " "
 
         end 

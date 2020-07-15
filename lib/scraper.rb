@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-module Coffee_Break
+module CoffeeBreak
     class Scraper 
 
         def scrape

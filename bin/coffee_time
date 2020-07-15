@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby 
 
-require_relative '../lib/coffee_break.rb'
+require_relative '../lib/coffeebreak.rb'
 
-Coffee_Break::CLI.new.run
+CoffeeBreak::CLI.new.run

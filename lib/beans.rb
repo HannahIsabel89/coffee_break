@@ -1,6 +1,6 @@
 require 'pry'
 
-class Coffee_Break::Beans 
+class CoffeeBreak::Beans 
 
     # Display collection of coffee with corresponding attributes
      

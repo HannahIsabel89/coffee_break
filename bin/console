@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require "bundler"
-require "coffee_break"
-require_relative "../lib/coffee_break.rb"
+require "coffeebreak"
+require_relative "../lib/coffeebreak.rb"
 
 
 require "irb"
