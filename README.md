@@ -2,8 +2,6 @@
 
 Welcome to the CoffeeBreak gem! This gem allows the user to look through the selections of available coffee at Playeronecoffee's website.
 
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
