@@ -10,11 +10,11 @@ module CoffeeBreak
         system("clear") # Clears terminal before starting CLI program
         loading_message
         
-        Scraper.new.scrape
-        Scraper_2.new.scrape_second_page
+        Scraper.new.scrape # Displays product list from 1st page.
+        Scraper_2.new.scrape_second_page # Displays product list from 2nd page.
         
         greeting 
-        while menu != 'exit' # Terminal stays open unless user ends program
+        while menu != 'exit' # Checks to see if user will exit program. Otherwise, terminal stays open to show menu.
           
       end
     end
@@ -82,7 +82,7 @@ module CoffeeBreak
         CoffeeBreak::Beans.all.each_with_index do |product, index| 
           # Products are listed in numerical order with product name.
           puts "#{index+1} #{product.name}"
-        
+          # Data obtained from scrape method displays the name of "product" by order.
         end
       end
 
@@ -111,7 +111,7 @@ module CoffeeBreak
             puts " "
             menu
 
-          elsif answer == "n"
+          elsif answer == "n" || answer == "exit"
             exit_program
           else 
             puts " "

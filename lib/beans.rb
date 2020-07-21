@@ -6,7 +6,9 @@ class CoffeeBreak::Beans
      
     attr_accessor :name, :label, :price, :details
 
-    @@all = []
+    # Stores every instance of Beans and anything collected from scrape methods will display in CLI.
+
+    @@all = [] 
 
         def initialize(name, label, price, details) 
             @name = name
