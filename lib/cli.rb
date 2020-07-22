@@ -1,5 +1,4 @@
 require_relative "./scraper.rb"
-require_relative "./scraper2.rb"
 
 module CoffeeBreak
   class CLI
@@ -11,7 +10,6 @@ module CoffeeBreak
         loading_message
         
         Scraper.new.scrape # Displays product list from 1st page.
-        Scraper_2.new.scrape_second_page # Displays product list from 2nd page.
         
         greeting 
         while menu != 'exit' # Checks to see if user will exit program. Otherwise, terminal stays open to show menu.
@@ -52,31 +50,32 @@ module CoffeeBreak
         list_options
         input = gets.strip.downcase
 
-        if input == "i"
-          puts " "
-          # Blank space to show below if user makes valid. 
-
-        elsif input != "exit"
-          i = Integer(input , exception: false) 
-          # Parsed input to raise exception when not false
-          if !i.nil? 
-            puts i 
-            # Prints number user entered. 
-            display_coffee(i-1)
-            # Count starts at 0 for the computer, 1 for the user.
-            display_again 
-
-          else  # Raises argument if input is wrong
+          if input == "i"
             puts " "
-            puts "Oops! Please try again."
-            puts " " 
+            # Blank space to show below if user makes valid.
+
+            elsif input != "exit"
+              i = Integer(input , exception: false)
+              # Parsed input to raise exception when not false
+              puts " "
+              if i.between?(1,17)
+                puts i
+                # Prints number user entered. 
+                display_coffee(i-1)
+                # Count starts at 0 for the computer, 1 for the user.
+                display_again 
+                else 
+                  # Raises argument if input is wrong
+                  puts " "
+                  puts "Oops! Please try again."
+                  puts " " 
             
+                end
+              end
+              input # User prompted to give input.
             end
-          end
-            input # User prompted to give input.
-        end
-      end 
-    end 
+          end 
+        end 
     
       def list_options
         CoffeeBreak::Beans.all.each_with_index do |product, index| 
@@ -87,19 +86,22 @@ module CoffeeBreak
       end
 
       def display_coffee(index)
+        bean = CoffeeBreak::Beans.all[index]
+        CoffeeBreak::Scraper.new.scrape_details(bean)
+
         puts " "
         puts "You chose:"
         puts " "
-        puts "#{CoffeeBreak::Beans.all[index].name}" 
+        puts "#{bean.name}" 
         puts " "
-        puts "#{CoffeeBreak::Beans.all[index].label}"
+        puts "#{bean.label}"
         puts " "
-        puts "#{CoffeeBreak::Beans.all[index].price}"
+        puts "#{bean.price}"
         puts " "
-        puts "#{CoffeeBreak::Beans.all[index].details}"
+        puts "#{bean.details}"
         puts " "
 
-        end 
+      end 
           
       def display_again 
         puts "Would you like to see the menu again? [y/n]"
@@ -118,5 +120,6 @@ module CoffeeBreak
             puts "Uh-oh! Please try again."
             puts " "
 
-        end  
-      end
+      end  
+
+end
